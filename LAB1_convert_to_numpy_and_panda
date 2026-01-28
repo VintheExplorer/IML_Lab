@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+
+n = int(input("Enter number of elements:"))
+
+arr = []
+for i in range(n):
+    data = int(input(f"Enter the {i+1}th element: "))
+    arr.append(data)
+
+np_array = np.array(arr)
+print("\nNumPy Array:")
+print(np_array)
+
+
+pd_series = pd.Series(np_array)
+print("\nPandas Series:")
+print(pd_series)
+
+pd_dataframe = pd.DataFrame(np_array, columns=["Values"])
+print("\nPandas DataFrame:")
+print(pd_dataframe)
