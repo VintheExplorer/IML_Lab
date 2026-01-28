@@ -28,3 +28,4 @@ pd_1D=data2.values.flatten()
 print("\nas 1D array using Pandas: ")
 print(pd_1D)
 
+
