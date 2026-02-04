@@ -1,0 +1,54 @@
+# Question: Write a program to find out the precision, recall, f1, accuracy, false positive , false negative
+# from 2 1-dimensional datasets, one is the predicted value and another one is ttthe orignal value.
+# Also plot the confusion matrix of the dataset
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
+
+y_true = np.array([1, 0, 1, 1, 0, 1, 0, 0, 1, 0])     # Original values
+y_pred = np.array([1, 0, 0, 1, 0, 1, 1, 0, 1, 0])     # Predicted values
+
+# Metrics
+
+
+accuracy = accuracy_score(y_true, y_pred)
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+
+# Confusion Matrix
+cm = confusion_matrix(y_true, y_pred)
+
+TN, FP, FN, TP = cm.ravel()
+
+# Metrics display:
+
+print("Accuracy :", accuracy)
+print("Precision:", precision)
+print("Recall   :", recall)
+print("F1 Score :", f1)
+
+print("\nTrue Positive :", TP)
+print("True Negative :", TN)
+print("False Positive:", FP)
+print("False Negative:", FN)
+
+# Confusion Matrix:
+
+plt.figure()
+plt.imshow(cm)
+plt.title("Confusion Matrix")
+plt.colorbar()
+
+classes = ['0', '1']
+plt.xticks([0,1], classes)
+plt.yticks([0,1], classes)
+
+for i in range(2):
+    for j in range(2):
+        plt.text(j, i, cm[i, j], ha="center", va="center")
+
+plt.xlabel("Predicted Label")
+plt.ylabel("True Label")
+plt.show()
